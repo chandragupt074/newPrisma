@@ -40,7 +40,7 @@ export const updateAccount=async(req,res)=>{
     const {name,bio,avtarUrl,socialLinks} = req.body
    
     const updateUser = await prisma.user.update({
-      where:{id:userId},
+     where:{ id: Number(userId) },
       data:{
         ...(name&&{name}),
         ...(bio && {bio}),
@@ -85,7 +85,7 @@ export const changePassword = async (req, res) => {
         success: false,
       });
     }
-    const user = await prisma.user.findUnique({ where: { id: userId } });
+    const user = await prisma.user.findUnique({   where:{ id: Number(userId) }, });
     if (!user) {
       return res.status(404).json({
         message: "User not found",
