@@ -4,7 +4,7 @@ import { changePassword, getAccountDetails, updateAccount } from "../controllers
 
 const router = express.Router();
 
-router.route("/account").get(getAccountDetails)
+router.route("/account").get(isAuthenticated,getAccountDetails)
 router.route("/account").put(isAuthenticated,updateAccount)
 router.route("/account/password").put(isAuthenticated,changePassword)
 
