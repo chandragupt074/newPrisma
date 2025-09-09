@@ -61,7 +61,20 @@ export const getAllVideos=async(_,res)=>{
     try {
         const videos = await prisma.video.findMany({
             include:{
-                user:true,
+               user: {
+  select: {
+    id: true,
+    email: true,
+    name: true,
+    createdAt: true,
+    updatedAt: true,
+    avtarUrl: true,
+    bio: true,
+    socialLinks: true,
+    isDeleted: true,
+  }
+},
+
                 likes:true,
                 comments:true
             },
