@@ -9,8 +9,8 @@ export const createVideo = async (req, res) => {
     if (
       !title ||
       !description ||
-      !req.files.thumbnail ||
-      !req.files.video ||
+      // !req.files.thumbnail ||
+      // !req.files.video ||
       !filters ||
       !stickers ||
       !compressed ||
@@ -23,15 +23,15 @@ export const createVideo = async (req, res) => {
     }
 
    
-    const thumbnailUrl = req.files.thumbnail[0].location;
-    const videoUrl = req.files.video[0].location;
+    // const thumbnailUrl = req.files.thumbnail[0].location;
+    // const videoUrl = req.files.video[0].location;
 
     const video = await prisma.video.create({
       data: {
         title,
         description,
-        thumbnailUrl,
-        musicUrl: videoUrl,
+        // thumbnailUrl,
+        // musicUrl: videoUrl,
         filters,
         stickers,
         compressed,
