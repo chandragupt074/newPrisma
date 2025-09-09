@@ -7,7 +7,7 @@ export const getAccountDetails=async(req,res)=>{
     const userId = req.id;
 
     const user = await prisma.user.findUnique({
-      where:{ id: Number(userId) },
+      where:{ id:userId },
       select:{
         id:true,
         name:true,
